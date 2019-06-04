@@ -1,7 +1,6 @@
 go version >= 1.11
 ```
-  go mod init
-  go run cmd   
+  go run cmd/main.go  
 ```
 
 # Kubernetes and Cloud Ready Boilerplate Go Server [![Docker Automated build](https://img.shields.io/docker/automated/onuryilmaz/boilerplate-go.svg?style=flat-square)](https://hub.docker.com/r/onuryilmaz/boilerplate-go/)
