@@ -1,3 +1,9 @@
+go version >= 1.11
+```
+  go mod init
+  go run cmd   
+```
+
 # Kubernetes and Cloud Ready Boilerplate Go Server [![Docker Automated build](https://img.shields.io/docker/automated/onuryilmaz/boilerplate-go.svg?style=flat-square)](https://hub.docker.com/r/onuryilmaz/boilerplate-go/)
 * REST Server included
 * Cloud ready and all steps in Docker
@@ -54,4 +60,3 @@ HTTP/1.1 200 OK
 ## Dependency Management
 * [govendor](https://github.com/kardianos/govendor) is used for dependency management.
 * Fixed versions can be checked from [vendor.json](vendor/vendor.json)
-
