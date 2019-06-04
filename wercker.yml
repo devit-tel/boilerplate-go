@@ -4,14 +4,14 @@ build:
     steps:
 
     - wercker/setup-go-workspace:
-      package-dir: github.com/onuryilmaz/boilerplate-go
+      package-dir: github.com/NV4RE/boilerplate-go
 
     # Test the project
     - script:
         name: go test
-        code: go test -v github.com/onuryilmaz/boilerplate-go/...
+        code: go test -v github.com/NV4RE/boilerplate-go/...
 
     # Statically build the project
     - script:
         name: go build
-        code: go build -o boilerplate-go github.com/onuryilmaz/boilerplate-go/cmd 
+        code: go build -o boilerplate-go github.com/NV4RE/boilerplate-go/cmd 

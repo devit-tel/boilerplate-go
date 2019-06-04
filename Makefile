@@ -1,4 +1,4 @@
-REPO?=onuryilmaz/boilerplate-go
+REPO?=NV4RE/boilerplate-go
 VERSION=latest
 
 EXPOSED_PORT= "8080"

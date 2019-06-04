@@ -9,8 +9,8 @@ import (
 	"syscall"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/onuryilmaz/boilerplate-go/pkg/commons"
-	"github.com/onuryilmaz/boilerplate-go/pkg/server"
+	"github.com/NV4RE/boilerplate-go/pkg/commons"
+	"github.com/NV4RE/boilerplate-go/pkg/server"
 	"github.com/spf13/pflag"
 )
 

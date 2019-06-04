@@ -3,7 +3,7 @@ go version >= 1.11
   go run cmd/main.go  
 ```
 
-# Kubernetes and Cloud Ready Boilerplate Go Server [![Docker Automated build](https://img.shields.io/docker/automated/onuryilmaz/boilerplate-go.svg?style=flat-square)](https://hub.docker.com/r/onuryilmaz/boilerplate-go/)
+# Kubernetes and Cloud Ready Boilerplate Go Server [![Docker Automated build](https://img.shields.io/docker/automated/NV4RE/boilerplate-go.svg?style=flat-square)](https://hub.docker.com/r/NV4RE/boilerplate-go/)
 * REST Server included
 * Cloud ready and all steps in Docker
 * Kubernetes deployment and service included

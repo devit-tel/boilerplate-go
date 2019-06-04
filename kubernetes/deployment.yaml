@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: boilerplate-go
-        image: onuryilmaz/boilerplate-go
+        image: NV4RE/boilerplate-go
         ports:
         - containerPort: 8080

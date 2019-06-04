@@ -8,7 +8,7 @@ import (
 
 	"github.com/Sirupsen/logrus"
 	"github.com/julienschmidt/httprouter"
-	"github.com/onuryilmaz/boilerplate-go/pkg/commons"
+	"github.com/NV4RE/boilerplate-go/pkg/commons"
 )
 
 // REST provides functionality for HTTP REST API Server
@@ -32,6 +32,7 @@ func (r *REST) Start() {
 	logrus.Info("Starting REST server...")
 	logrus.Infof("REST server connecting to port %v", r.port)
 
+	logrus.Info("eieiei")
 	r.router.GET("/ping", r.pingHandler)
 
 	r.server = &http.Server{Addr: ":" + r.port, Handler: r.router}

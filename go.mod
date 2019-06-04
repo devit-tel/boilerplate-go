@@ -1,4 +1,4 @@
-module github.com/onuryilmaz/boilerplate-go
+module github.com/NV4RE/boilerplate-go
 
 go 1.12
 

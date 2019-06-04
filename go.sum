@@ -10,6 +10,8 @@ github.com/jtolds/gls v0.0.0-20160105205208-9570505a136b h1:fQBxh1MN5O6r/oPgSZ4H
 github.com/jtolds/gls v0.0.0-20160105205208-9570505a136b/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
 github.com/julienschmidt/httprouter v1.1.0 h1:7wLdtIiIpzOkC9u6sXOozpBauPdskj3ru4EI5MABq68=
 github.com/julienschmidt/httprouter v1.1.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
+github.com/NV4RE/boilerplate-go v0.0.0-20180222122602-e60de35ae5a8 h1:j1vzLsxztb4wqSmnJXxrfyRDoETzDX61Z/Yr2/43afM=
+github.com/NV4RE/boilerplate-go v0.0.0-20180222122602-e60de35ae5a8/go.mod h1:Q4kA4UM7by96lZrgGTqC52M/9UBW8KbvPX+OtmrhBV0=
 github.com/phayes/freeport v0.0.0-20141201041908-e7681b376149 h1:nU4ri+KRaSg4fOlRbGqaEHZ6tU84ZnrjHCqqq0em+VQ=
 github.com/phayes/freeport v0.0.0-20141201041908-e7681b376149/go.mod h1:iIss55rKnNBTvrwdmkUpLnDpZoAHvWaiq5+iMmen4AE=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

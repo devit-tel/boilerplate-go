@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/onuryilmaz/boilerplate-go/pkg/commons"
+	"github.com/NV4RE/boilerplate-go/pkg/commons"
 	"github.com/phayes/freeport"
 	. "github.com/smartystreets/goconvey/convey"
 )
