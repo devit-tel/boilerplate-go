@@ -2,16 +2,11 @@ package main
 
 import (
 	"flag"
-	"os"
-
-	"os/signal"
-	"sync"
-	"syscall"
-
-	"github.com/Sirupsen/logrus"
 	"github.com/NV4RE/boilerplate-go/pkg/commons"
 	"github.com/NV4RE/boilerplate-go/pkg/server"
+	"github.com/Sirupsen/logrus"
 	"github.com/spf13/pflag"
+	"os"
 )
 
 var options commons.Options
@@ -33,18 +28,17 @@ func main() {
 		logrus.Fatal("Error during log level parse:", err)
 	}
 
+	// webserver := server.createServer(options)
+	// webserver.Start()
+
+	// <-sigs
+	// logrus.Warn("Shutting down...")
+	// webserver.Stop()
+	server.CreateServer(options)
+
 	sigs := make(chan os.Signal, 1)
-	stop := make(chan struct{})
-	signal.Notify(sigs, os.Interrupt, syscall.SIGTERM)
-	wg := &sync.WaitGroup{}
-
-	webserver := server.NewREST(options)
-	webserver.Start()
-
 	<-sigs
 	logrus.Warn("Shutting down...")
-	webserver.Stop()
-
-	close(stop)
-	wg.Wait()
+	// close(stop)
+	// wg.Wait()
 }

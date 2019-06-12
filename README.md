@@ -1,5 +1,7 @@
 go version >= 1.11
 ```
+  go get github.com/codegangsta/gin
+
   go run cmd/main.go  
 ```
 
