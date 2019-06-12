@@ -16,6 +16,7 @@ require (
 	github.com/go-chi/chi v4.0.2+incompatible
 	github.com/google/pprof v0.0.0-20190515194954-54271f7e092f // indirect
 	github.com/google/shlex v0.0.0-20181106134648-c34317bd91bf // indirect
+	github.com/gravityblast/fresh v0.0.0-20170301142741-9c0092493eff // indirect
 	github.com/howeyc/fsnotify v0.9.0 // indirect
 	github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6 // indirect
 	github.com/joho/godotenv v1.3.0
