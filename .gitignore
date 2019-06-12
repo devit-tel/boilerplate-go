@@ -3,4 +3,4 @@
 
 .wercker
 
-./build/*
+dist/*
