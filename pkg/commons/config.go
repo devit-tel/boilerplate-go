@@ -1,4 +1,4 @@
-package config
+package commons
 
 import (
 	"github.com/joho/godotenv"
@@ -7,20 +7,6 @@ import (
 	"strconv"
 	"strings"
 )
-
-type ServerConfig struct {
-	Port string
-}
-
-type MongoDbConfig struct {
-	Uri string
-}
-
-type Config struct {
-	Env     string
-	Server  ServerConfig
-	MongoDb MongoDbConfig
-}
 
 func LoadEnv() {
 	// loads values from .env into the system
@@ -33,6 +19,9 @@ func LoadEnv() {
 func GetConfig() *Config {
 	return &Config{
 		Env: getEnv("GO_ENV", "LOCAL"),
+		Log: LogConfig{
+			Level: getEnv("LOG_LEVEL", "INFO"),
+		},
 		Server: ServerConfig{
 			Port: getEnv("SERVER_PORT", ":8080"),
 		},

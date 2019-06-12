@@ -18,7 +18,7 @@ require (
 	github.com/google/shlex v0.0.0-20181106134648-c34317bd91bf // indirect
 	github.com/howeyc/fsnotify v0.9.0 // indirect
 	github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6 // indirect
-	github.com/joho/godotenv v1.3.0 // indirect
+	github.com/joho/godotenv v1.3.0
 	github.com/jtolds/gls v0.0.0-20160105205208-9570505a136b // indirect
 	github.com/julienschmidt/httprouter v1.1.0
 	github.com/kardianos/govendor v1.0.9 // indirect
