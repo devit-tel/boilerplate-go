@@ -28,6 +28,8 @@ require (
 	github.com/mattn/go-shellwords v1.0.5 // indirect
 	github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b // indirect
 	github.com/phayes/freeport v0.0.0-20141201041908-e7681b376149
+	github.com/pilu/config v0.0.0-20131214182432-3eb99e6c0b9a // indirect
+	github.com/pilu/fresh v0.0.0-20170301142741-9c0092493eff // indirect
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/sirupsen/logrus v1.4.2 // indirect
 	github.com/smartystreets/assertions v0.0.0-20160422195351-40711f774818 // indirect
