@@ -1,0 +1,49 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+cache:
+  untracked: true
+
+variables:
+  CONTAINER_RELEASE_IMAGE: registry.dev.sendit.asia/sendit/go-boilerplate
+  SERVICE_NAME: go-boilerplate
+  DOCKER_DRIVER: overlay
+
+before_script:
+  - export DOCKER_API_VERSION=1.23 && docker login -u $DOCKER_USER -p $DOCKER_PASSWORD registry.dev.sendit.asia
+  - apk update && apk add ca-certificates wget && update-ca-certificates
+
+staging-push:
+  stage: build
+  environment: staging
+  script:
+    - docker pull $CONTAINER_RELEASE_IMAGE:stable || true
+    - docker build --cache-from $CONTAINER_RELEASE_IMAGE:stable -t $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA:0:7} -f deployment/Dockerfile .
+    - docker push $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA}
+  tags:
+    - docker
+  only:
+    - master@sendit-th/demo-go-boilerplate
+
+staging-deploy:
+  image: registry.gitlab.com/sendit-th/docker-base:kube
+  stage: deploy
+  environment: staging
+  before_script:
+    - mkdir ~/.kube
+    - echo -n "${KUBE_CONFIG}" | base64 -d > ~/.kube/config
+    - kubectl config use-context admin-sendit-dev-staging.k8s.local
+    - 'helm init --client-only'
+  script:
+    - 'git clone https://$SENDIT_GITLAB_USERNAME:$SENDIT_GITLAB_PASSWORD@gitlab.com/sendit-th/sendit-infra-cluster.git /sendit-infra-cluster'
+    - 'helm upgrade -i staging-${SERVICE_NAME} /sendit-infra-cluster/helm-generic-deployment -f deployment/values-staging.yaml --namespace=staging --set image.tag=staging-${CI_COMMIT_SHA}'
+  tags:
+    - docker
+  only:
+    - master@sendit-th/demo-go-boilerplate

@@ -1,0 +1,52 @@
+kind: Deployment
+replicaCount: 1
+
+image:
+  repository: registry.dev.sendit.asia/sendit/go-boilerplate
+  pullPolicy: Always
+imagePullSecrets:
+  name: senditregistry
+terminationGracePeriodSeconds: 60
+nameOverride: staging-go-boilerplate
+containerPorts:
+  - containerPort: 80
+    protocol: TCP
+env:
+  - name: APP_NAME
+    value: go-boilerplate
+  - name: GO_ENV
+    value: staging
+  - name: SERVER_PORT
+    value: 80
+workingDir: /var/source
+healthCheck:
+  enabled: true
+  readinessProbe:
+    httpGet:
+      path: /system/health
+      port: 80
+      initialDelaySeconds: 5
+      timeoutSeconds: 1
+      periodSeconds: 30
+      successThreshold: 1
+      failureThreshold: 3
+  livenessProbe:
+    httpGet:
+      path: /system/health
+      port: 80
+    initialDelaySeconds: 300
+    timeoutSeconds: 10
+    periodSeconds: 60
+    successThreshold: 1
+    failureThreshold: 3
+
+services:
+  - type: ClusterIP
+    ports:
+      - name: staging-go-boilerplate-http
+        protocol: TCP
+        port: 80
+        targetPort: 80
+serviceHostNetwork:
+  enabled: false
+nodeSelectorOverride: true

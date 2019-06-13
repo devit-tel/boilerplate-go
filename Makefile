@@ -11,6 +11,7 @@ BINARY_UNIX=$(BINARY_NAME)_unix
 .PHONY: run
 
 build:
+	export GO111MODULE=on
 	$(GOCMD) build -o ./dist/$(BINARY_NAME) -v
 test:
 	$(GOCMD) test -v ./...
