@@ -1,24 +1,24 @@
 package commons
 
 import (
-	log "github.com/Sirupsen/logrus"
+	"github.com/Sirupsen/logrus"
 	"os"
 )
 
 func InitLog() {
 	env := GetConfig()
 
-	log.SetFormatter(&log.JSONFormatter{})
+	logrus.SetFormatter(&logrus.JSONFormatter{})
 
 	// Output to stdout instead of the default stderr
 	// Can be any io.Writer, see below for File example
-	log.SetOutput(os.Stdout)
+	logrus.SetOutput(os.Stdout)
 
 	// Only log the warning severity or above.
-	level, err := log.ParseLevel(env.Log.Level)
+	level, err := logrus.ParseLevel(env.Log.Level)
 	if err == nil {
-		log.SetLevel(level)
+		logrus.SetLevel(level)
 	} else {
-		log.Fatal("Error during log level parse:", err)
+		logrus.Fatal("Error during log level parse:", err)
 	}
 }

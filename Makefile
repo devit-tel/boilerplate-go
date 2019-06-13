@@ -14,6 +14,8 @@ build:
 	$(GOCMD) build -o ./dist/$(BINARY_NAME) -v
 test:
 	$(GOCMD) test -v ./...
+env:
+	godotenv
 clean:
 	$(go clean)
 	rm -f $(BINARY_NAME)
@@ -22,9 +24,9 @@ run:
 	make build
 	./$(BINARY_NAME)
 run-watch:
-	fresh
+	godotenv fresh
 install:
-	$(GOCMD) mod init 
+	$(GOCMD) get github.com/joho/godotenv/cmd/godotenv
 	$(GOCMD) get github.com/gravityblast/fresh
 build-docker:
 	docker build --no-cache -t $(REPO):$(VERSION) .

@@ -2,18 +2,10 @@ package commons
 
 import (
 	"github.com/Sirupsen/logrus"
-	"github.com/joho/godotenv"
 	"os"
 	"strconv"
 	"strings"
 )
-
-func LoadEnv() {
-	// loads values from .env into the system
-	if err := godotenv.Load(); err != nil {
-		logrus.Info("Not found .env file")
-	}
-}
 
 func GetConfig() *Config {
 	return &Config{

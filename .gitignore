@@ -4,3 +4,6 @@
 .wercker
 
 dist/*
+tmp/*
+
+.env
