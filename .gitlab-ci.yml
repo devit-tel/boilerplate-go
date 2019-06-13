@@ -24,7 +24,7 @@ staging-push:
   environment: staging
   script:
     - docker pull $CONTAINER_RELEASE_IMAGE:stable || true
-    - docker build --cache-from $CONTAINER_RELEASE_IMAGE:stable -t $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA:0:7} -f deployment/Dockerfile .
+    - docker build --cache-from $CONTAINER_RELEASE_IMAGE:stable -t $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA} -f Dockerfile .
     - docker push $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA}
   tags:
     - docker
