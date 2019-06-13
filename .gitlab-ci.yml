@@ -29,7 +29,7 @@ staging-push:
   tags:
     - docker
   only:
-    - master@sendit-th/demo-go-boilerplate
+    - master@sendit-th/test-go-boilerplate
 
 staging-deploy:
   image: registry.gitlab.com/sendit-th/docker-base:kube
@@ -46,4 +46,4 @@ staging-deploy:
   tags:
     - docker
   only:
-    - master@sendit-th/demo-go-boilerplate
+    - master@sendit-th/test-go-boilerplate
