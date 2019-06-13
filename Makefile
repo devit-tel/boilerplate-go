@@ -1,8 +1,8 @@
 PROJECT_NAME=boilerplate-go
-PROJECT_ORG=NV4RE
+PROJECT_ORG=nv4re
 VERSION=latest
 GOCMD=go
-EXPOSED_PORT= "8080"
+EXPOSED_PORT=8080
 
 REPO?=$(PROJECT_ORG)/$(PROJECT_NAME)
 BINARY_NAME=$(PROJECT_NAME)
@@ -11,8 +11,7 @@ BINARY_UNIX=$(BINARY_NAME)_unix
 .PHONY: run
 
 build:
-	export GO111MODULE=on
-	$(GOCMD) build -o ./dist/$(BINARY_NAME) -v
+	$(GOCMD) build -o ./dist/$(BINARY_NAME) -tags netgo -a -v
 test:
 	$(GOCMD) test -v ./...
 env:
@@ -30,10 +29,10 @@ install:
 	$(GOCMD) get github.com/joho/godotenv/cmd/godotenv
 	$(GOCMD) get github.com/gravityblast/fresh
 build-docker:
-	docker build --no-cache -t $(REPO):$(VERSION) .
+	docker build -t $(REPO):$(VERSION) .
 push-docker:
 	docker push $(REPO):$(VERSION)
 run-docker:
-	docker run --rm -p $(EXPOSED_PORT):8080 $(REPO):$(VERSION) --log-level=debug --port=8080
+	docker run -p $(EXPOSED_PORT):8080 $(REPO):$(VERSION)
 test-docker:
 	docker build --no-cache --rm --target=tester .
