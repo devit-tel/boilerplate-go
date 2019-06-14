@@ -3,9 +3,9 @@ package server
 
 import (
 	"context"
-	"net/http"
 	"github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 // REST provides functionality for HTTP REST API Server
@@ -28,18 +28,18 @@ func CreateServer(addr string) *HttpServer {
 
 	return &HttpServer{
 		server: &http.Server{
-            Addr:    addr,
-            Handler: router,
-        },
+			Addr:    addr,
+			Handler: router,
+		},
 	}
 }
 
-func(r *HttpServer) Start() {
-    r.server.ListenAndServe()
+func (r *HttpServer) Listen() {
+	logrus.Fatal(r.server.ListenAndServe())
 }
 
 // Stop stops REST API gracefully
 func (r *HttpServer) Stop() {
-	logrus.Warn("Stopping REST http..")
-	r.server.Shutdown(context.TODO())
+	logrus.Info("Stopping REST http..")
+	logrus.Fatal(r.server.Shutdown(context.TODO()))
 }
