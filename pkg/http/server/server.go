@@ -3,6 +3,7 @@ package server
 
 import (
 	"context"
+	"github.com/NV4RE/boilerplate-go/pkg/http/router"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"
@@ -15,21 +16,19 @@ type HttpServer struct {
 
 // CreateServer create a http
 func CreateServer(addr string) *HttpServer {
-	router := gin.Default()
+	r := gin.Default()
 
 	// v1 routers
-	v1 := router.Group("/v1")
+	v1 := r.Group("/v1")
 	{
-		v1.GET("/login/:name", func(c *gin.Context) {
-			name := c.Param("name")
-			c.String(http.StatusOK, "Hello %s", name)
-		})
+		v1.GET("/sample/:name", router.SampleParam)
+		v1.POST("/sample", router.SampleJsonBody)
 	}
 
 	return &HttpServer{
 		server: &http.Server{
 			Addr:    addr,
-			Handler: router,
+			Handler: r,
 		},
 	}
 }
