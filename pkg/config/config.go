@@ -1,11 +1,31 @@
-package commons
+package config
 
 import (
-	"github.com/Sirupsen/logrus"
+    "github.com/Sirupsen/logrus"
 	"os"
 	"strconv"
 	"strings"
 )
+
+type LogConfig struct {
+    Level string
+}
+
+type ServerConfig struct {
+    Addr string
+}
+
+type MongoDbConfig struct {
+    Uri string
+}
+
+type Config struct {
+    Env     string
+    Log     LogConfig
+    Server  ServerConfig
+    MongoDb MongoDbConfig
+}
+
 
 func GetConfig() *Config {
 	return &Config{
@@ -14,7 +34,7 @@ func GetConfig() *Config {
 			Level: getEnv("LOG_LEVEL", "INFO"),
 		},
 		Server: ServerConfig{
-			Port: getEnv("SERVER_PORT", ":8080"),
+			Addr: getEnv("SERVER_ADDRESS", ":8080"),
 		},
 		MongoDb: MongoDbConfig{
 			Uri: getEnv("MONGODB_URI", ""),

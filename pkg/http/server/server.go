@@ -1,22 +1,20 @@
-// Package server provides functionality for handling data input and queries
+// Package http provides functionality for handling data input and queries
 package server
 
 import (
 	"context"
 	"net/http"
-
-	"github.com/NV4RE/boilerplate-go/pkg/commons"
 	"github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
 )
 
 // REST provides functionality for HTTP REST API Server
-type REST struct {
+type HttpServer struct {
 	server *http.Server
 }
 
-// CreateServer create a server
-func CreateServer(options commons.Options) *REST {
+// CreateServer create a http
+func CreateServer(addr string) *HttpServer {
 	router := gin.Default()
 
 	// v1 routers
@@ -28,21 +26,20 @@ func CreateServer(options commons.Options) *REST {
 		})
 	}
 
-	server := &http.Server{
-		Addr:    ":8080",
-		Handler: router,
+	return &HttpServer{
+		server: &http.Server{
+            Addr:    addr,
+            Handler: router,
+        },
 	}
+}
 
-	server.ListenAndServe()
-
-	return &REST{
-		server: server,
-	}
-
+func(r *HttpServer) Start() {
+    r.server.ListenAndServe()
 }
 
 // Stop stops REST API gracefully
-func (r *REST) Stop() {
-	logrus.Warn("Stopping REST server..")
+func (r *HttpServer) Stop() {
+	logrus.Warn("Stopping REST http..")
 	r.server.Shutdown(context.TODO())
 }

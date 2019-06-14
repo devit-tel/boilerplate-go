@@ -1,13 +1,12 @@
-package commons
+package logger
 
 import (
-	"github.com/Sirupsen/logrus"
-	"os"
+    "github.com/NV4RE/boilerplate-go/pkg/config"
+    "github.com/Sirupsen/logrus"
+    "os"
 )
 
-func InitLog() {
-	env := GetConfig()
-
+func InitLog(logConfig config.LogConfig) {
 	logrus.SetFormatter(&logrus.JSONFormatter{})
 
 	// Output to stdout instead of the default stderr
@@ -15,7 +14,7 @@ func InitLog() {
 	logrus.SetOutput(os.Stdout)
 
 	// Only log the warning severity or above.
-	level, err := logrus.ParseLevel(env.Log.Level)
+	level, err := logrus.ParseLevel(logConfig.Level)
 	if err == nil {
 		logrus.SetLevel(level)
 	} else {

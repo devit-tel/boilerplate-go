@@ -1,18 +1,16 @@
 package main
 
 import (
-	"github.com/NV4RE/boilerplate-go/pkg/commons"
-	"github.com/NV4RE/boilerplate-go/pkg/server"
-	"github.com/Sirupsen/logrus"
+    "github.com/NV4RE/boilerplate-go/pkg/logger"
+    "github.com/NV4RE/boilerplate-go/pkg/http/server"
+    "github.com/NV4RE/boilerplate-go/pkg/config"
 )
 
-var options commons.Options
-
 func init() {
-	commons.InitLog()
-	logrus.Info(commons.GetConfig())
 }
 
 func main() {
-	server.CreateServer(options)
+    cfg := config.GetConfig()
+    logger.InitLog(cfg.Log)
+	server.CreateServer(cfg.Server.Addr)
 }
