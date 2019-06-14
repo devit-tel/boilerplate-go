@@ -1,31 +1,30 @@
 package config
 
 import (
-    "github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 	"os"
 	"strconv"
 	"strings"
 )
 
 type LogConfig struct {
-    Level string
+	Level string
 }
 
 type ServerConfig struct {
-    Addr string
+	Addr string
 }
 
 type MongoDbConfig struct {
-    Uri string
+	Uri string
 }
 
 type Config struct {
-    Env     string
-    Log     LogConfig
-    Server  ServerConfig
-    MongoDb MongoDbConfig
+	Env     string
+	Log     LogConfig
+	Server  ServerConfig
+	MongoDb MongoDbConfig
 }
-
 
 func GetConfig() *Config {
 	return &Config{

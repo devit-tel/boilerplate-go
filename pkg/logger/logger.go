@@ -1,9 +1,9 @@
 package logger
 
 import (
-    "github.com/NV4RE/boilerplate-go/pkg/config"
-    "github.com/Sirupsen/logrus"
-    "os"
+	"github.com/NV4RE/boilerplate-go/pkg/config"
+	"github.com/sirupsen/logrus"
+	"os"
 )
 
 func InitLog(logConfig config.LogConfig) {
