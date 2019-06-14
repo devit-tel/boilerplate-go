@@ -21,8 +21,12 @@ func CreateServer(addr string) *HttpServer {
 	// v1 routers
 	v1 := r.Group("/v1")
 	{
-		v1.GET("/sample/:name", router.SampleParam)
-		v1.POST("/sample", router.SampleJsonBody)
+		sample := v1.Group("/sample")
+		{
+			sample.GET("/:name", router.SampleParam)
+			sample.POST("/", router.SampleJsonBody)
+		}
+
 	}
 
 	return &HttpServer{
