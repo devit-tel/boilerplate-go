@@ -26,7 +26,6 @@ func CreateServer(addr string) *HttpServer {
 			sample.GET("/:name", router.SampleParam)
 			sample.POST("/", router.SampleJsonBody)
 		}
-
 	}
 
 	return &HttpServer{
@@ -41,7 +40,6 @@ func (r *HttpServer) Listen() {
 	logrus.Fatal(r.server.ListenAndServe())
 }
 
-// Stop stops REST API gracefully
 func (r *HttpServer) Stop() {
 	logrus.Info("Stopping REST http..")
 	logrus.Fatal(r.server.Shutdown(context.TODO()))
