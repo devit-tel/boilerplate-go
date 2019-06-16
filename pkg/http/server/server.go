@@ -3,7 +3,7 @@ package server
 
 import (
 	"context"
-	"github.com/NV4RE/boilerplate-go/pkg/http/router"
+	"github.com/devit-tel/boilerplate-go/pkg/http/router"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"

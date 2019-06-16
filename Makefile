@@ -1,5 +1,5 @@
 PROJECT_NAME=boilerplate-go
-PROJECT_ORG=nv4re
+PROJECT_ORG=devit-tel
 VERSION=latest
 GOCMD=go
 EXPOSED_PORT=8080

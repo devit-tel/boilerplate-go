@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"github.com/NV4RE/boilerplate-go/pkg/config"
+	"github.com/devit-tel/boilerplate-go/pkg/config"
 	"github.com/sirupsen/logrus"
 	"os"
 )

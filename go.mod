@@ -1,4 +1,4 @@
-module github.com/NV4RE/boilerplate-go
+module github.com/devit-tel/boilerplate-go
 
 go 1.12
 
