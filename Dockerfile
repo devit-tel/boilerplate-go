@@ -6,5 +6,5 @@ RUN make build
 
 FROM alpine
 ENV GIN_MODE=release
-COPY --from=builder /go/src/github.com/devit-tel/boilerplate-go/dist/boilerplate-go ./
-ENTRYPOINT ["/bin/sh", "-c", "sleep 99999999"]
+COPY --from=builder /go/src/github.com/devit-tel/boilerplate-go/dist/boilerplate-go /var/source
+ENTRYPOINT ["/bin/sh", "-c", "/var/source/boilerplate-go"]
