@@ -6,4 +6,5 @@ RUN make build
 
 FROM alpine
 COPY --from=builder /go/src/github.com/devit-tel/boilerplate-go/dist/boilerplate-go ./
+RUN ls
 ENTRYPOINT ["/bin/sh", "-c", "./boilerplate-go"]
