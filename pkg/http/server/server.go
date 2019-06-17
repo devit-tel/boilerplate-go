@@ -18,9 +18,15 @@ type HttpServer struct {
 func CreateServer(addr string) *HttpServer {
 	r := gin.Default()
 
+    system := r.Group("/system")
+    {
+        system.GET("/health", router.Health)
+    }
+
 	// v1 routers
 	v1 := r.Group("/v1")
 	{
+
 		sample := v1.Group("/sample")
 		{
 			sample.GET("/:name", router.SampleParam)
