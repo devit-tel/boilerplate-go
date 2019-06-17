@@ -2,7 +2,7 @@ PROJECT_NAME=boilerplate-go
 PROJECT_ORG=devit-tel
 VERSION=latest
 GOCMD=go
-EXPOSED_PORT=8080
+EXPOSED_PORT=80
 
 REPO?=$(PROJECT_ORG)/$(PROJECT_NAME)
 BINARY_NAME=$(PROJECT_NAME)
@@ -33,6 +33,6 @@ build-docker:
 push-docker:
 	docker push $(REPO):$(VERSION)
 run-docker:
-	docker run -p $(EXPOSED_PORT):8080 $(REPO):$(VERSION)
+	docker run -p $(EXPOSED_PORT):80 $(REPO):$(VERSION)
 test-docker:
 	docker build --no-cache --rm --target=tester .
