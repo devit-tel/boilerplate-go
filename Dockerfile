@@ -8,4 +8,4 @@ FROM alpine
 ENV GIN_MODE=release
 COPY --from=builder /go/src/github.com/devit-tel/boilerplate-go/dist/boilerplate-go ./
 COPY --from=builder /go/src/github.com/devit-tel/boilerplate-go/start.sh ./
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["/bin/sh", "-c", "./start.sh"]
