@@ -24,12 +24,12 @@ staging-push:
   environment: staging
   script:
     - docker pull $CONTAINER_RELEASE_IMAGE:stable || true
-    - docker build --cache-from $CONTAINER_RELEASE_IMAGE:stable -t $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA} -f Dockerfile .
-    - docker push $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA}
+    - docker build --cache-from $CONTAINER_RELEASE_IMAGE:stable -t $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA:0:7} -f Dockerfile .
+    - docker push $CONTAINER_RELEASE_IMAGE:staging-${CI_COMMIT_SHA:0:7}
   tags:
     - docker
   only:
-    - master@sendit-th/test-go-boilerplate
+    - master@sendit-th/test-go-boilerplate`
 
 staging-deploy:
   image: registry.gitlab.com/sendit-th/docker-base:kube
@@ -42,7 +42,7 @@ staging-deploy:
     - 'helm init --client-only'
   script:
     - 'git clone https://$SENDIT_GITLAB_USERNAME:$SENDIT_GITLAB_PASSWORD@gitlab.com/sendit-th/sendit-infra-cluster.git /sendit-infra-cluster'
-    - 'helm upgrade -i staging-${SERVICE_NAME} /sendit-infra-cluster/helm-generic-deployment -f deployment/values-staging.yaml --namespace=staging --set image.tag=staging-${CI_COMMIT_SHA}'
+    - 'helm upgrade -i staging-${SERVICE_NAME} /sendit-infra-cluster/helm-generic-deployment -f deployment/values-staging.yaml --namespace=staging --set image.tag=staging-${CI_COMMIT_SHA:0:7}'
   tags:
     - docker
   only:

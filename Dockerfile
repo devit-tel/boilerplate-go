@@ -5,6 +5,6 @@ WORKDIR /go/src/github.com/devit-tel/boilerplate-go
 RUN make build
 
 FROM alpine
+ENV GIN_MODE=release
 COPY --from=builder /go/src/github.com/devit-tel/boilerplate-go/dist/boilerplate-go ./
-RUN ls
-ENTRYPOINT ["/bin/sh", "-c", "./boilerplate-go"]
+ENTRYPOINT ["/bin/sh", "-c", "ls", "&", "./boilerplate-go"]
